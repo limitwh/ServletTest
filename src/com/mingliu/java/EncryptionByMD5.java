@@ -33,9 +33,9 @@ public  class  EncryptionByMD5 {
 		}
 		return s;
 	}
-	public static void main(String[] args){
-	
+//	public static void main(String[] args){
+//	
 //		System.out.println(EncryptionByMD5.getMD5("1qazxsw2".getBytes()));
 //		System.out.println(EncryptionByMD5.getMD5("zaq12wsx".getBytes()));
-	}
+//	}
 }
