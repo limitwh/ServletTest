@@ -2,9 +2,6 @@ package com.mingliu.java;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,42 +11,44 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class SetCookie
+ * Servlet implementation class ShowCookies
  */
-@WebServlet(name="SetCookie",urlPatterns={"/SetCookie"})
-public class SetCookie extends HttpServlet {
+@WebServlet(name="ShowCookies",urlPatterns={"/ShowCookies"})
+public class ShowCookies extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public SetCookie() {
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ShowCookies() {
         super();
         // TODO Auto-generated constructor stub
     }
-       
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		DateFormat dateFormat = new SimpleDateFormat(" yyyy/MM/dd HH:mm:ss");
-		Date date = new Date();
-		
-		for(int i = 0;i<3;i++){
-			Cookie cookie = new Cookie("Session-Cookie-"+i,"Cookie-Value-S"+i + dateFormat.format(date));
-			response.addCookie(cookie);
-			cookie = new Cookie("Persistent-Cookie-"+i, "Persistent-Value-"+i + dateFormat.format(date));
-			cookie.setMaxAge(3600);
-			response.addCookie(cookie);
-		}
-		
+		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=gb2312");
 		PrintWriter out = response.getWriter();
-		String title = "Setting Cookie";
-		out.println("<html><head><title>Setting Cookie</title></head>"
+		String title = "Show Cookies";
+		out.println("<HTML><head><title>Show Cookies</title></head>" + "<BODY BGCOLOR=\"#FDF5E6\">\n"
 				+	"<H1 ALIGN=\"CENTER\">" + title + "</H1>\n"
-				+	"Save 6 cookies from this page.\n"
-				+	"See cookie info in here:\n" 
-				+	"<A HREF=\"ShowCookies\"\n>"
-				+	"<CODE>ShowCookies</CODE> servlet</A>.\n"
-				+	"<html>");
+				+	"<TABLE BORDER=1 ALIGN=\"CENTER\">\n" + "<TR BGCOLOR=\"#FFA000\">\n"
+				+	"<TH>Cookie name\n" + "<TH>Cookie Value"
+				);
+		Cookie[] cookies =  request.getCookies();
+		if(cookies != null)
+		{
+			Cookie cookie;
+			for(int i=0;i<cookies.length;i++)
+			{
+				cookie=cookies[i];
+				out.println("<TR>\n"+"  <TD>"+cookie.getName()+"</TD>\n"+"  <TD>\n"+cookie.getValue()+"</TD></TR>\n");
+			}
+			out.println("</TABLE></BODY></HTML>");
+		}
 	}
 
 	/**
@@ -57,7 +56,6 @@ public class SetCookie extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		super.doGet(request, response);
 	}
 
 }
