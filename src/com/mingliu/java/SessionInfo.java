@@ -39,8 +39,8 @@ public class SessionInfo extends HttpServlet {
 		out.println("</HEAD>");
 		out.println("<BODY>");
 		out.println("<H3>Session Information</H3>");
-		out.println("New Session");
-		out.println("<BR>Session ID: "+mySession.isNew());
+		out.println("New Session: "+ mySession.isNew());
+		out.println("<BR>Session ID: "+mySession.getId());
 		out.println("<BR>Session Creation Time: "+ new java.util.Date(mySession.getCreationTime()));
 		out.println("<BR>Session last access time: "+ new java.util.Date(mySession.getLastAccessedTime()));
 		out.println("<H3>Request Information</H3>");
