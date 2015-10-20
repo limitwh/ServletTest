@@ -46,7 +46,7 @@ public class ShowSession extends HttpServlet {
 		}
 		mysession.setAttribute("accesscount", accesscount);
 		
-		out.println("<html><head><title>Session Tracking</title></head>"
+		out.println("<html><head><title>"+ title +"</title></head>"
 				+	"<BODY BGCOLOR=\"#FDF5E6\">\n" + "<H1 ALIGN=\"CENTER\">"
 				+	Heading + "</H1>\n" + "<H2>Information on your session:</H2>\n" 
 				+	"<TABLE BORDER=1 ALIGN=\"CENTER\">"
