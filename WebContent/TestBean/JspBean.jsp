@@ -9,9 +9,9 @@
 </head>
 <body>
 	<jsp:useBean id="FristBean" class="com.mingliu.javabean.TestBean"></jsp:useBean>
-	
-	<jsp:setProperty name="FristBean" property="user" value="jack"/>
- 
+	<jsp:setProperty name="FristBean" property="user" value="jack" />
 	<jsp:getProperty name="FristBean" property="user" />
+<br><jsp:setProperty name="FristBean" property="age" param="nianling"/>
+	<jsp:getProperty name="FristBean" property="age" />
 </body>
 </html>

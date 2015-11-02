@@ -10,7 +10,7 @@ public class UserInfo {
 	ResultSet rs = null;
 	
 	public HashMap<String,String> HashGet(String username)  throws Exception {
-	HashMap<String,String> UserInf = new HashMap<String,String>();
+	HashMap<String,String> UserInfo = new HashMap<String,String>();
 	String SQLstr = "select * from UserView where UserName = '" + username + "'";
 	try{
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -20,7 +20,7 @@ public class UserInfo {
 		rs = stmt.executeQuery(SQLstr);
 		while (rs.next()) {
 			for (int i = 1; i < rs.getMetaData().getColumnCount()+1; i++) {
-				UserInf.put(rs.getMetaData().getColumnName(i), rs.getString(rs.getMetaData().getColumnName(i)));
+				UserInfo.put(rs.getMetaData().getColumnName(i), rs.getString(rs.getMetaData().getColumnName(i)));
 			}
 		}
 	} catch (ClassNotFoundException ea){
@@ -43,11 +43,11 @@ public class UserInfo {
 				conn.close();
 			    conn=null;
 			}
-		} catch(SQLException e) {
-			e.printStackTrace();
+		} catch(SQLException ec) {
+			ec.printStackTrace();
 			}
 	}
-	return UserInf;
+	return UserInfo;
 	}
 	
 	public String UserInfoItem(String select, String table,String where, String value) throws Exception {
@@ -83,8 +83,8 @@ public class UserInfo {
 					conn.close();
 				    conn=null;
 				}
-			} catch(SQLException e) {
-				e.printStackTrace();
+			} catch(SQLException ec) {
+				ec.printStackTrace();
 				}
 		}
 		return returnValue;
